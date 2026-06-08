@@ -130,8 +130,8 @@
 				if (data.isdown) {
 					updateTimer(data.downsince);
 				} else {
-					document.getElementById('downtime').textContent="";
-					document.getElementById('downtime-title').textContent="";
+					updateTimer(data.downsince);
+					document.getElementById('downtime-title').textContent="Current Uptime:";
 				}
 
 				const status = document.getElementById("status");
