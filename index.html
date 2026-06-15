@@ -13,9 +13,9 @@
 		body {
 			text-align: center;
 		}
-
-		#gif-container {
-			width: auto;
+		#gif {
+			max-width: 98vw;
+			height: auto;
 		}
 		#status {
 			display: inline-block;
@@ -55,7 +55,9 @@
 	<div id="status">Fetching status...</div>
 	<h2 id="downtime-title">Current downtime:</h2>
 	<p id="downtime"></p>
-	<div id="gif-container"></div>
+	<div id="gif-container">
+		<img id="gif" src="">
+	</div>
 	<div class="footer">
 		<a href="https://nlexxd.online">Go to the website</a>
 	</div>
@@ -148,17 +150,9 @@
 				status.style.fontFamily = data.font;
 				status.style.color = data.textColor;
 				status.style.backgroundColor = data.bgColor;
-
-				if (data.gif) {
-					const img = document.createElement("img");
-
-
-					img.src = "./" + data.gif;
-
-					document
-						.getElementById("gif-container")
-						.appendChild(img);
-				}
+				const gifSrc="./" + data.gif;
+				document.getElementById("gif").src=gifSrc;
+				
 			})
 			.catch(err => {
 				console.error(err);
