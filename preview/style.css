@@ -45,7 +45,7 @@ body {
 	/*background: linear-gradient(335deg,rgba(221, 162, 95, 100) 44%, rgba(253, 187, 45, 100) 100%);*/
 	border: 2px var(--black-forest);
 	border-style: none none dashed none;
-	background-image: url('/img/banner.png');
+	background-image: url('./img/banner.png');
 	background-repeat: no-repeat;
 	background-size: contain;
 	text-align: right;
