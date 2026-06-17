@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="description" content="I throw my hands up in the air sometimes">
+	<meta name="googlebot" content="notranslate">
+	<title>Nlexxd - Homepage</title>
+	<link rel="icon" href="/img/favicon.ico" sizes="any">
+	<link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+	<div id="maindiv">
+		<div id="topbar">
+			<marquee style="color:#283618ff" id="mark">Welcome to my website! - HEAVILY under construction</marquee>
+		</div>
+		<div id="headerArea">
+			<div id="header">
+				<img src="/img/skeletonfire.gif" class="skeleton">
+				<h4 class="oushii">did you see that 👀</h4>
+			</div>
+			<nav id="navbar"></nav>
+		</div> 
+
+		<div id="flex">
+			<!-- BEGIN UPDATES -->
+			<aside id=leftbar style="padding-right: 10px;">
+				<div class="box">
+					<p style="color: var(--sunlit-clay)">All of my socials right now!</p>
+					<ul style="padding-left: 10px;">
+						<li>
+							<a href="https://instagram.com/tfrauenberg" rel="noopener noreferrer">Instagram</a>
+						</li>
+						<li>
+							<a href="https://tiktok.com/@tfrauenberg">TikTok</a>
+						</li>
+						<li>
+							<a href="https://x.com/nlexxd" rel="noopener noreferrer">Twitter</a>
+						</li>
+						<li>
+							<a href="https://youtube.com/@toastyleemon" rel="noopener noreferrer">Youtube</a>
+						</li>
+						<li>
+							<a href="https://open.spotify.com/user/vd0m0xq6afqlcqa0kxllxpi90" rel="noopener noreferrer">Spotify</a>
+						</li>
+						<li>
+							<a href="https://steamcommunity.com/id/deephollowhollerer" rel="noopener noreferrer">Steam</a>
+						</li>
+					</ul>
+				</div>	
+				<hr class="rounded">
+
+				<div class="stampbox"> 
+					<!-- stamp stuff-->
+					<div class="stampcontainer">
+						<a href="https://nlexxd.online" target="_blank"><img src="/img/stamp.gif" alt="Nlexxd.online" width="99" height="56"></a>
+
+						<a href="https://stamp-studio.wasmer.app/" target="_blank"><img src="https://stamp-studio.wasmer.app/stamp-studio-button.gif" alt="Stamp Studio" width="99" height="56"></a>
+					</div>
+					<div class="stampcontainer">
+						<img src="/img/aurastamp.gif" alt="all my aura... gone.." width="99" height="56">
+					</div>
+				</div>
+
+				<hr class="rounded">
+				<section class="guestbook">
+					<h3 style="color: #dda15eff;">Guestbook</h3>
+					<p style="color: #dda15eff;">Leave a message! you can only leave one message per day. :)</p>
+					<form id="guestbook-form">
+						<input 
+							type="text" 
+							id="name"
+							maxlength="64"
+							placeholder="Your name"
+							required 
+						>
+
+						<textarea
+							id="message"
+							maxlength="500"
+							placeholder="Message goes here..."
+							required
+						></textarea>
+
+						<button type="submit" id="guestButton">Sign guestbook</button>
+
+					</form>
+					<p id="thankyou-guest"></p>
+				</section>
+				<hr class="rounded">
+				<div id="entries">
+					<h2 style="color: #dda15eff;">- Latest Entries -</h2>
+					<h1>(This is a preview, so the guestbook thingy is not working)</h1>
+				</div>
+				
+			</aside>
+			<main>
+				<h1 style="font-family: Papyrus; font-style: normal; font-weight: 400;">DISCLAIMER: THIS IS A WORK IN PROGRESS. (and a preview)</h1>
+				<img src="/img/woke.gif" id="snep">
+			</main>
+		</div>
+
+		<footer id="footer"></footer>
+	</div>
+
+	
+	<script>
+		function timeOfDay() {
+			const now=Math.floor(Date.now()/3600000)%24-4;
+
+			if (now>=5 && now<=12) {
+				return "Good Morning! Welcome to my website ;)"
+			} else if (now>12 && now<=18) {
+				return "Good Afternoon, Welcome to my website! B)"
+			}  else {
+				return "Good Evening. Welcome to my website :P"
+			}
+		}
+
+		async function loadEntries() {
+			const entries=await fetch("/api/guestbook")
+				.then(r => r.json());
+
+			const container = document.getElementById("entries");
+
+			for (const REQentry of entries.slice(0,3)) {
+				const entry=document.createElement("div");
+				entry.className="entry";
+
+				const name=document.createElement("h3");
+				name.textContent=REQentry.name;
+
+				const message=document.createElement("p");
+				message.textContent=REQentry.message;
+
+				entry.appendChild(name);
+				entry.appendChild(message);
+
+				container.appendChild(entry);
+			}
+		}
+
+		function disableSubmit() {
+			document.getElementById("guestButton").disabled = true;
+			document.getElementById("thankyou-guest").textContent="Thank you for your submission!";
+		}
+
+		async function addLatest() {
+			const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+			await sleep(200);
+
+			document.getElementById("entries").innerHTML=`<h2 style="color: #dda15eff;">- Latest Entries -</h2>`
+
+			const entries=await fetch("/api/guestbook")
+				.then(r => r.json());
+
+			const container = document.getElementById("entries");
+
+			for (const REQentry of entries.slice(0,3)) {
+				const entry=document.createElement("div");
+				entry.className="entry";
+
+				const name=document.createElement("h3");
+				name.textContent=REQentry.name;
+
+				const message=document.createElement("p");
+				message.textContent=REQentry.message;
+
+				entry.appendChild(name);
+				entry.appendChild(message);
+
+				container.appendChild(entry);
+			}
+		}
+
+		loadEntries();
+
+		document.querySelector("form").addEventListener("submit", async e => {
+			e.preventDefault();
+
+			const name=document.querySelector("#name").value;
+			const message=document.querySelector("#message").value;
+
+			const response= await fetch("/api/guestbook", {
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json"
+				},
+				body: JSON.stringify({
+					name,
+					message
+				})
+			});
+
+			console.log(await response.json());
+
+			disableSubmit();
+			addLatest();
+		});
+
+		const timeMsg=timeOfDay();
+		document.getElementById("mark").textContent=timeMsg;
+	</script>
+</body>
+</html>
