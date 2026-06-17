@@ -1,0 +1,254 @@
+:root {
+	--olive-leaf: hsla(74, 32%, 32%, 1);
+	--black-forest: hsla(88, 38%, 15%, 1);
+	--cornsilk: hsla(52, 94%, 94%, 1);
+	--sunlit-clay: hsla(32, 65%, 62%, 1);
+	--copperwood: hsla(28, 67%, 44%, 1);
+}
+
+body {
+	background-color: var(--cornsilk);
+	margin: 0;
+
+}
+
+#maindiv {
+	max-width: 900px;
+	margin: 0 auto;
+	box-sizing: border-box;
+	display: block;
+	box-shadow: 10px 10px;
+	border: 2px var(--black-forest);
+	border-style: dashed none none dashed;
+}
+
+#topbar {
+	width: 100%;
+	height: 30px;
+	padding: 10px;
+	font-size: medium;
+	background-color: var(--copperwood);
+	box-sizing: border-box;
+	border: 2px var(--black-forest);
+	border-style: none none dashed none;
+}
+
+#headerarea {
+	box-sizing: border-box;
+}
+
+#header {
+	width: 100%;
+	height: 150px;
+	box-sizing: border-box;
+	background-color: #dda25f;
+	/*background: linear-gradient(335deg,rgba(221, 162, 95, 100) 44%, rgba(253, 187, 45, 100) 100%);*/
+	border: 2px var(--black-forest);
+	border-style: none none dashed none;
+	background-image: url('/img/banner.png');
+	background-repeat: no-repeat;
+	background-size: contain;
+	text-align: right;
+	position: relative;
+}
+
+#headerarea h1 {
+	font-family: 'Brush Script MT', cursive;
+	color: #bc6c252a;
+	padding-top: 30px;
+	left: 700px;
+}
+
+main {
+	flex: 1;
+	border: 2px dashed var(--copperwood);
+	background-color: var(--sunlit-clay);
+	padding: 20px;
+	order: 2;
+	border-style: none dashed dashed none;
+}
+
+#snep {
+	width: 50%;
+}
+
+
+#footer {
+	margin-top: 10px;
+	color: #ae4202;
+}
+
+aside {
+	background-color: var(--olive-leaf);
+	width: 220px;
+	padding: 20px;
+	fons-size: smaller;
+	border: 2px dashed var(--black-forest);
+	border-style: none dashed dashed dashed;
+}
+
+aside:after {
+  width: 100%;
+  height: 40px;
+  display: block;
+  content: "";
+  background-image: url("https://64.media.tumblr.com/32a5588ee110207d2845b3e19b3a738a/c21306bc65a11404-98/s400x600/53b45d467b2c5e5b048b8fb6cab517de645e9b4c.gifv");
+  background-position: center center;
+  background-size: cover;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #fff;
+  border-radius: 2px;
+  box-shadow: 0px 0px 15px black;
+
+}
+
+#navbar {
+	height: 40px;
+	background-color: var(--copperwood);
+	width: 100%;
+	border: 2px dashed var(--black-forest);
+	border-style: none none dashed none;
+}
+
+#navbar ul {
+	display: flex;
+	padding: 0;
+	margin: 0;
+	list-style-type: none;
+	justify-content: space-evenly;
+}
+
+#navbar li {
+	padding-top: 10px;
+}
+
+#navbar li a {
+	color: var(--black-forest);
+	font-weight: 800;
+	text-decoration: none;
+}
+
+#navbar li a:hover {
+	color: var(--olive-leaf);
+	text-decoration: underline;
+}
+#flex {
+	width: 100%;
+	display: flex;
+	box-sizing: border-box;
+}
+
+.skeleton {
+	opacity: 0;
+    position: absolute;
+    left: 0;
+    animation: walk 10s linear 1;
+}
+
+.oushii {
+	position: absolute;
+	animation: appear 120s linear 1;
+	color: var(--copperwood);
+	left: 850px;
+	bottom: 20px;
+}
+
+@keyframes walk {
+    from {
+        left: -200px;
+        opacity: 100;
+    }
+    to {
+        left: 4000px;
+        opacity: 0;
+    }
+    opacity: 0;
+}
+
+@keyframes appear {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 100;
+	}
+}
+
+.name {
+	padding-bottom: 5px;
+}
+
+.guestbook {
+	padding: 10px;
+	padding-top: 1px;
+	border: 2px dashed var(--black-forest);
+	border-style: dashed dashed dashed dashed;
+	margin-bottom: 10px;
+}
+
+
+.guestbook textarea {
+	resize: vertical;
+	padding-top: 5px;
+}
+
+#entries {
+	padding: 10px;
+	border: 2px dashed var(--black-forest);
+	border-style: dashed dashed dashed dashed;
+}
+
+.entry {
+	margin-top: 10px;
+	padding: 15px;
+	border: 1px solid var(--black-forest);
+}
+
+.entry h3 {
+	font-weight: bold;
+	color: var(--copperwood);
+}
+
+.entry p {
+	color: var(--sunlit-clay);
+}
+
+.box {
+	margin-top: 10px;
+	padding: 10px;
+	padding-top: 1px;
+	border: 2px dashed var(--black-forest);
+	border-style: dashed dashed dashed dashed;
+	margin-bottom: 10px;
+}
+
+.stampbox {
+	margin-top: 10px;
+	padding: 2px;
+	padding-top: 8px;
+	margin-bottom: 6px;
+}
+
+.stampcontainer {
+	display: flex;
+}
+.stampcontainer a {
+	padding: 2px;
+}
+
+hr.rounded {
+	border-top: 4px solid var(--black-forest);
+}
+
+p {
+	color: var(--black-forest);
+}
+
+a:link {
+ color: var(--copperwood);
+}
+
+a:visited {
+	color: var(--sunlit-clay);
+}
